@@ -1,0 +1,7 @@
+node_modules/
+*.zip
+.DS_Store
+.idea
+notes.md
+.sonarlint/
+package-lock.json
