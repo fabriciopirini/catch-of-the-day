@@ -11,5 +11,9 @@
             "jsx": true
         },
         "sourceType": "module"
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "react/prop-types": "off"
     }
 }
