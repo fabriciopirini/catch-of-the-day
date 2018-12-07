@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { formatPrice } from "../helpers";
-
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 export class Order extends Component {
     renderOrder = key => {
         const fish = this.props.fishes[key];
@@ -9,16 +9,29 @@ export class Order extends Component {
         if (!fish) return null;
         if (!isAvailable) {
             return (
-                <li key={key}>
-                    Sorry {fish ? fish.name : "fish"} is no longer available
-                </li>
+                <CSSTransition>
+                    <li key={key}>
+                        Sorry {fish ? fish.name : "fish"} is no longer available
+                    </li>
+                </CSSTransition>
             );
         }
         return (
-            <li key={key}>
-                {count} lbs {fish.name}
-                {formatPrice(count * fish.price)}
-            </li>
+            <React.Fragment>
+                <CSSTransition
+                    classNames="order"
+                    key={key}
+                    timeout={{ enter: 250, exit: 250 }}
+                >
+                    <li key={key}>
+                        {count} lbs {fish.name}{" "}
+                        {formatPrice(count * fish.price)}{" "}
+                        <button onClick={() => this.props.deleteOrder(key)}>
+                            &times;
+                        </button>
+                    </li>
+                </CSSTransition>
+            </React.Fragment>
         );
     };
 
@@ -36,8 +49,9 @@ export class Order extends Component {
         return (
             <div className="order-wrap">
                 <h2>Order</h2>
-                <ul className="order">{orderIds.map(this.renderOrder)}</ul>
-
+                <TransitionGroup component="ul" className="order">
+                    {orderIds.map(this.renderOrder)}
+                </TransitionGroup>
                 <div className="total">
                     Total:
                     <strong>{formatPrice(total)}</strong>
