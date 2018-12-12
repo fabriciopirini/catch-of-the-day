@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { formatPrice } from "../helpers";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 export class Order extends Component {
+    static propTypes = {
+        fishes: PropTypes.object,
+        order: PropTypes.object,
+        deleteOrder: PropTypes.func
+    };
+
     renderOrder = key => {
         const fish = this.props.fishes[key];
         const count = this.props.order[key];
@@ -9,7 +16,11 @@ export class Order extends Component {
         if (!fish) return null;
         if (!isAvailable) {
             return (
-                <CSSTransition>
+                <CSSTransition
+                    classNames="order"
+                    key={key}
+                    timeout={{ enter: 500, exit: 500 }}
+                >
                     <li key={key}>
                         Sorry {fish ? fish.name : "fish"} is no longer available
                     </li>
@@ -17,21 +28,29 @@ export class Order extends Component {
             );
         }
         return (
-            <React.Fragment>
-                <CSSTransition
-                    classNames="order"
-                    key={key}
-                    timeout={{ enter: 250, exit: 250 }}
-                >
-                    <li key={key}>
-                        {count} lbs {fish.name}{" "}
-                        {formatPrice(count * fish.price)}{" "}
+            <CSSTransition
+                classNames="order"
+                key={key}
+                timeout={{ enter: 500, exit: 500 }}
+            >
+                <li key={key}>
+                    <span>
+                        <TransitionGroup component="span" className="count">
+                            <CSSTransition
+                                classNames="count"
+                                key={count}
+                                timeout={{ enter: 500, exit: 500 }}
+                            >
+                                <span>{count}</span>
+                            </CSSTransition>
+                        </TransitionGroup>
+                        lbs {fish.name} {formatPrice(count * fish.price)}{" "}
                         <button onClick={() => this.props.deleteOrder(key)}>
                             &times;
                         </button>
-                    </li>
-                </CSSTransition>
-            </React.Fragment>
+                    </span>
+                </li>
+            </CSSTransition>
         );
     };
 
