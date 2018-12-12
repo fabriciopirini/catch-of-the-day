@@ -4,4 +4,3 @@ node_modules/
 .idea
 notes.md
 .sonarlint/
-package-lock.json
