@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactLoading from "react-loading";
 import PropTypes from "prop-types";
 import AddFishForm from "./AddFishForm";
 import EditFishForm from "./EditFishForm";
@@ -9,6 +10,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 export class Inventory extends Component {
+    constructor(props) {
+        super(props);
+        this.isLoading = true;
+    }
+
     static propTypes = {
         fishes: PropTypes.object,
         updateFish: PropTypes.func,
@@ -26,6 +32,7 @@ export class Inventory extends Component {
             if (user) {
                 this.authHandler({ user });
             }
+            this.isLoading = false;
         });
     }
 
@@ -36,7 +43,9 @@ export class Inventory extends Component {
             await base.post(`${this.props.storeId}/owner`, {
                 data: authData.user.uid
             });
+            store.owner = authData.user.uid;
         }
+
         this.setState({
             uid: authData.user.uid,
             owner: store.owner || authData.user.id
@@ -57,9 +66,29 @@ export class Inventory extends Component {
     };
 
     render() {
-        const logout = <button onClick={this.logout}>Log Out!</button>;
+        const logout = (
+            <button onClick={this.logout} style={{ marginBottom: "0.5em" }}>
+                Log Out!
+            </button>
+        );
 
-        if (!this.state.uid) {
+        if (this.isLoading === true) {
+            return (
+                <div className="inventory" style={{ overflow: "hidden" }}>
+                    <div
+                        style={{
+                            padding: "50%",
+                            marginTop: "-32px",
+                            marginLeft: "-32px"
+                        }}
+                    >
+                        <ReactLoading type={"spin"} color="#f5a623" />
+                    </div>
+                </div>
+            );
+        }
+
+        if (!this.state.uid && this.isLoading === false) {
             return <Login authenticate={this.authenticate} />;
         }
 
