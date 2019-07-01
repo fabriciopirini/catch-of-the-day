@@ -10,7 +10,7 @@
     "dependencies": {
         "autoprefixer-stylus": "0.14.0",
         "browserslist": "^4.3.6",
-        "firebase": "^5.7.0",
+        "firebase": "^5.11.1",
         "netlify-cli": "^2.6.0",
         "prop-types": "^15.6.2",
         "re-base": "4.0.0",
