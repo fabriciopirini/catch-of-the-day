@@ -12,7 +12,7 @@
         "browserslist": "^4.3.6",
         "firebase": "^5.7.0",
         "netlify-cli": "^2.6.0",
-        "prop-types": "^15.6.2",
+        "prop-types": "^15.7.2",
         "re-base": "4.0.0",
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
