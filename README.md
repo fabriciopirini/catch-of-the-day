@@ -8,7 +8,7 @@
 
 > A real-time app for a trendy seafood market where price and quantity available are variable and can change at a moment's notice. It was built a menu, an order form, and an inventory management area where authorized users can immediately update product details.
 
-### ✨ Demo
+## Demo
 
 ![Demo](demo-catch-of-the-day.gif)
 
@@ -25,6 +25,7 @@ npm run dev
 ```
 
 ## Deploy
+
 The project is production ready and can be easily deployed to [Zeit Now](https://zeit.co/now) for free with steps:
 
 ```sh
@@ -40,5 +41,6 @@ When asked about the directory, write `build`. The first time you will be asked 
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
