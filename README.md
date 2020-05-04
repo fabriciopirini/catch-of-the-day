@@ -1,20 +1,44 @@
-# Fresh Seafood Market website implemented using React and Node.js
+<h1 align="center">Welcome to Catch of the Day 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+</p>
 
-## How to run
-To run it in your local machine, follow the steps:
+> A real-time app for a trendy seafood market where price and quantity available are variable and can change at a moment's notice. It was built a menu, an order form, and an inventory management area where authorized users can immediately update product details.
 
-1. `git clone https://github.com/fapirini92/catch-of-the-day.git`
-2. `cd catch-of-the-day`
-3. `npm install`
-4. `npm run dev`
+### ✨ Demo
+
+![Demo](demo-catch-of-the-day.gif)
+
+## Install
+
+```sh
+npm install
+```
+
+## Usage
+
+```sh
+npm run dev
+```
 
 ## Deploy
 The project is production ready and can be easily deployed to [Zeit Now](https://zeit.co/now) for free with steps:
 
-1. `npm run build`
-2. `npm i -g now`
-3. `npm i serve`
-4. `now`
-5. When asked about the directory, write `build`
+```sh
+npm run build
+npm i -g now
+npm i serve
+now
+```
 
-The first time you will be asked to enter your email and to activate it.
+When asked about the directory, write `build`. The first time you will be asked to enter your email and to activate it.
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
